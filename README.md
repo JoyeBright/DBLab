@@ -1,4 +1,3 @@
-# DBLab Outline
+# Database Lab at University of Guilan
 
-### Introcution to Databases
-### Intro to SQL for Data Science
+### For further information follow the Wiki
