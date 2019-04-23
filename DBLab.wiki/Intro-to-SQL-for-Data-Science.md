@@ -1,10 +1,14 @@
+# Index
+
 ## Selecting Columns
+
 1. Selecting Single Columns
 1. Selecting Multiple Columns
 1. Select DISTINCT
 1. Learning to COUNT
 
 ## Filtering Rows
+
 1. Filtering results
 1. Simple filtering of numeric values
 1. Simple filtering of text
@@ -17,6 +21,7 @@
 1. Like and NOT LIKE
 
 ## Aggregate Functions
+
 1. Aggregate function
 1. Combining aggregate functions with WHERE
 1. A note on arithmetic
@@ -24,6 +29,7 @@
 1. Even more aliasing
 
 ## Sorting, Grouping and Joins
+
 1. ORDER BY
 1. Sorting single columns
 1. Sorting single columns (DESC)
