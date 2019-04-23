@@ -1,5 +1,11 @@
 # Examples
 
+Template of examples:
+>English Phrase
+```SQL
+Corresponding SQL query
+```
+
 ## Selecting Columns
 
 1. Selecting Single Columns
@@ -121,6 +127,282 @@ SELECT COUNT(DISTINCT(birthdate)) from people
 
 ```SQL
 SELECT DISTINCT(country) from films
+```
+
+---
+
+## Filtering Rows
+
+1. Filtering results
+1. Simple filtering of numeric values
+1. Simple filtering of text
+1. WHERE AND
+1. WHERE OR
+1. WHERE AND OR
+1. BETWEEN
+1. WHERE IN
+1. NULL and IS NULL
+1. Like and NOT LIKE
+
+### Filtering Results
+
+>Get all details for all films released in 2016.
+
+```SQL
+SELECT * FROM films WHERE release_year='2016'
+```
+
+---
+
+### Simple Filtering of Numeric Values
+
+>Get the number of films released before 2000.
+
+```SQL
+SELECT COUNT(*) from films WHERE release_year < 2000
+```
+
+---
+>Get the title and release year of films released after 2000.
+
+```SQL
+SELECT COUNT(*) FROM films WHERE release_year > 2000
+```
+
+---
+
+### Simple Filtering of Text
+
+>Get all details for all French language films.
+
+```SQL
+SELECT * from films WHERE language = 'French'
+```
+
+---
+>Get the name and birth date of the person born on November 11th, 1974. Remember to use ISO date format ('1974-11-11')!
+
+```SQL
+SELECT name, birthdate from people WHERE birthdate='1974-11-11'
+```
+
+---
+>Get the number of Hindi language films.
+
+```SQL
+SELECT COUNT(*) FROM films WHERE language='Hindi'
+```
+
+---
+>Get all details for all films with an R certification.
+
+```SQL
+SELECT * from films where certification='R'
+```
+
+---
+
+### AND
+
+>Get the title and release year for all Spanish language films released before 2000.
+
+```SQL
+SELECT title, release_year FRom films WHERE language='Spanish' AND release_year < 2000
+```
+
+---
+>Get all details for Spanish language films released after 2000.
+
+```SQL
+SELECT * from films WHERE language='Spanish' and release_year > 2000
+```
+
+---
+>Get the title and release year for films released in the 90s.
+
+```SQL
+SELECT title, release_year from films WHERE release_year >= 1990 and  release_year < 2000
+```
+
+---
+
+### OR
+
+>
+
+---
+
+### AND OR
+
+>Get the title and release year of all films released in 1990 or 2000 that were longer than two hours. Remember, duration is in minutes!
+
+```SQL
+SELECT title, release_year from films WHERE (release_year = 1990 OR release_year=2000) AND duration > 120
+```
+
+---
+
+### BETWEEN
+
+>Get the title and release year of all films released between 1990 and 2000 (inclusive).
+
+```SQL
+SELECT title, release_year from films WHERE release_year BETWEEN 1990 and 2000
+```
+
+---
+
+### NULL and IS NULL
+
+>Get the names of people who are still alive, i.e. whose death date is missing.
+
+```SQL
+SELECT name from people WHERE deathdate is NULL
+```
+
+---
+>Get the number of films which don't have a language associated with them.
+
+```SQL
+SELECT * FROM films WHERE LANGUAGE is NULL
+```
+
+---
+
+### LIKE and NOT LIKE
+
+>Get the names of all people whose names begin with 'B'. The pattern you need is 'B%'.
+
+```SQL
+SELECT name from people WHERE name LIKE 'B%'
+```
+
+---
+>Get the names of people whose names have 'r' as the second letter. The pattern you need is '_r%'.
+
+```SQL
+SELECT name FROM people WHERE name LIKE '_r%'
+```
+
+---
+
+## Aggregate Functions
+
+1. Aggregate function
+1. Combining aggregate functions with WHERE
+1. A note on arithmetic
+1. It's AS simple AS aliasing
+1. Even more aliasing
+
+### Aggregate Function
+
+>Use the SUM function to get the total duration of all films.
+
+```SQL
+SELECT SUM(duration) FROM films
+```
+
+---
+>Get the duration of the longest film.
+
+```SQL
+SELECT MAX(duration) FROM films
+```
+
+---
+>Get the average duration of all films.
+
+```SQL
+SELECT AVG(duration) from films
+```
+
+---
+>Get the average amount grossed by all films.
+
+```SQL
+SELECT AVG(gross) from films
+```
+
+---
+
+### Combining aggregate functions with WHERE
+
+>Use the SUM function to get the total amount grossed by all films made in the year 2000 or later.
+
+```SQL
+SELECT SUM(gross) FROM films WHERE release_year >= 2000
+```
+
+---
+>Get the average amount grossed by all films whose titles start with the letter 'A'.
+
+```SQL
+SELECT AVG(gross) FROM films WHERE title LIKE 'A%'
+```
+
+---
+>Get the amount grossed by the worst performing film in 1994.
+
+```SQL
+SELECT MIN(gross) FROM films WHERE release_year = 1994
+```
+
+---
+>Get the amount grossed by the best performing film between 2000 and 2012, inclusive.
+
+```SQL
+SELECT MAX(gross) FROM films WHERE release_year BETWEEN 2000 and 2012
+```
+
+---
+
+### A Note on Arithmetic
+
+>What is the result of SELECT (10 / 3)?
+
+```SQL
+SELECT 10/3
+```
+
+---
+
+### It's AS Simple AS Aliasing
+
+>Get the title and net profit (the amount a film grossed, minus its budget) for all films. Alias the net profit as net_profit.
+
+```SQL
+SELECT title, (gross - budget) as net_profit FROM films
+```
+
+---
+>Get the title and duration in hours for all films. The duration is in minutes, so you'll need to divide by 60.0 to get the duration in hours. Alias the duration in hours as duration_hours.
+
+```SQL
+SELECT title, duration/60.0 as duration_hours FROM films
+```
+
+---
+>Get the average duration in hours for all films, aliased as avg_duration_hours.
+
+```SQL
+SELECT AVG(duration)/60.0 as avg_duration_hours from films
+```
+
+---
+
+### Even More Aliasing
+
+>Get the percentage of people who are no longer alive. Alias the result as percentage_dead. Remember to use 100.0 and not 100!
+
+```SQL
+SELECT COUNT(deathdate)/cast(COUNT(*) as DECIMAL)*100.0 as percentage_dead FROM people
+```
+
+---
+>Get the number of decades the films table covers. Alias the result as number_of_decades. The top half of your fraction should be enclosed in parentheses.
+
+```SQL
+SELECT (MAX(release_year) - MIN(release_year)) / 10 as number_of_decades FROM films
 ```
 
 ---
