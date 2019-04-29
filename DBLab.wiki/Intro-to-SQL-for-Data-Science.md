@@ -25,8 +25,9 @@
 
 ## Sorting, Grouping and Joins
 1. ORDER BY
-2. Sorting single columns
-3. Sorting single columns (DESC)
-4. Sorting multiple columns
-5. GROUP BY
-6. HAVING
+2. [Sorting single columns](https://github.com/golshid/DBLab/wiki/Sorting-single-columns)
+3. [Sorting single columns (DESC)](https://github.com/golshid/DBLab/wiki/Sorting-single-columns-(DESC))
+4. [Sorting multiple columns](https://github.com/golshid/DBLab/wiki/Sorting-multiple-columns)
+5. [Group By](https://github.com/golshid/DBLab/wiki/GROUP-BY)
+6. [HAVING](https://github.com/golshid/DBLab/wiki/HAVING)
+
