@@ -400,7 +400,7 @@ SELECT (MAX(release_year) - MIN(release_year)) / 10 as number_of_decades FROM fi
 
 ---
 
-## Sorting, Grouping and Joins
+## Sorting, Grouping
 
 1. [Sorting single columns](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#sorting-single-columns)
 1. [Sorting single columns (DESC)](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#sorting-single-columns-desc)
