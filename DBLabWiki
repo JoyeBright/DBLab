@@ -1,0 +1,253 @@
+   
+   
+        ####Selecting Columns
+
+
+Select the title column from the films table.
+SELECT title from films
+
+Select the release_year column from the films table.
+SELECT release_year from films
+
+Select the name of each person in the people table.
+SELECT name from people
+
+Get the title of every film from the films table.
+SELECT title from films
+
+Get the title of every film from the films table.
+SELECT title from films
+
+Get the title and release year for every film.
+SELECT title, release_year from films
+
+Get the title, release year and country for every film.
+SELECT title, release_year, country from films
+
+Get all columns from the films table.
+SELECT * from films
+                  
+                ####  Select DISTINCT
+
+Get all the unique countries represented in the films table.
+SELECT DISTINCT(country) FROM films
+
+Get all the different film certifications from the films table.
+SELECT DISTINCT(certification) from films
+
+Get the different types of film roles from the roles table.
+SELECT DISTINCT(role) from roles
+            
+            
+              ####Learning to COUNT
+     
+     Count the number of rows in the people table.
+SELECT COUNT(*) from people
+
+Count the number of (non-missing) birth dates in the people table.
+SELECT COUNT(birthdate) from people
+
+Count the number of unique birth dates in the people table.
+SELECT COUNT(DISTINCT(birthdate)) from people
+
+Count the number of unique countries in the films table.
+SELECT DISTINCT(country) from films
+ 
+ 
+       ##### Filtering Rows
+
+
+
+Get all details for all films released in 2016.
+SELECT * FROM films WHERE release_year='2016'
+
+Get the number of films released before 2000.
+SELECT COUNT(*) from films WHERE release_year < 2000
+
+Get the title and release year of films released after 2000.
+SELECT COUNT(*) FROM films WHERE release_year > 2000
+
+Get all details for all French language films.
+SELECT * from films WHERE language = 'French'
+
+Get the name and birth date of the person born on November 11th, 1974.
+Remember to use ISO date format ('1974-11-11')!
+SELECT name, birthdate from people WHERE birthdate='1974-11-11'
+
+Get the number of Hindi language films.
+SELECT COUNT(*) FROM films WHERE language='Hindi'
+
+Get all details for all films with an R certification.
+SELECT * from films where certification='R'
+   
+                     
+                      #### AND
+
+
+       Get the title and release year for all Spanish language films released before 2000.
+SELECT title, release_year FRom films WHERE language='Spanish' AND release_year < 2000
+
+Get all details for Spanish language films released after 2000.
+SELECT * from films WHERE language='Spanish' and release_year > 2000
+
+Get the title and release year for films released in the 90s.
+SELECT title, release_year from films WHERE release_year >= 1990 and  release_year < 2000
+ 
+ 
+                       ####AND OR
+
+
+     Get the title and release year of all films released in 1990 or 2000 that were longer than two hours.
+Remember, duration is in minutes!
+SELECT title, release_year from films WHERE (release_year = 1990 OR release_year=2000) AND duration > 120
+
+                      #### BETWEEN
+
+
+     Get the title and release year of all films released between 1990 and 2000 (inclusive).
+SELECT title, release_year from films WHERE release_year BETWEEN 1990 and 2000
+
+                    ####NULL
+Get the names of people who are still alive, i.e. whose death date is missing.
+SELECT name from people WHERE deathdate is NULL
+
+Get the number of films which don't have a language associated with them.
+SELECT * FROM films WHERE LANGUAGE is NULL
+                        
+                       #### LIKE and NOT LIKE
+
+
+        Get the names of all people whose names begin with 'B'. The pattern you need is 'B%'.
+SELECT name from people WHERE name LIKE 'B%'
+
+Get the names of people whose names have 'r' as the second letter. The pattern you need is '_r%'.
+SELECT name FROM people WHERE name LIKE '_r%'
+        
+        #####Aggregate Functions
+
+
+    Use the SUM function to get the total duration of all films.
+SELECT SUM(duration) FROM films
+
+Get the duration of the longest film.
+SELECT MAX(duration) FROM films
+
+Get the average duration of all films.
+SELECT AVG(duration) from films
+
+Get the average amount grossed by all films.
+SELECT AVG(gross) from films
+
+Use the SUM function to get the total amount grossed by all films made in the year 2000 or later.
+SELECT SUM(gross) FROM films WHERE release_year >= 2000
+
+Get the average amount grossed by all films whose titles start with the letter 'A'.
+SELECT AVG(gross) FROM films WHERE title LIKE 'A%'
+
+Get the amount grossed by the worst performing film in 1994.
+SELECT MIN(gross) FROM films WHERE release_year = 1994
+
+Get the amount grossed by the best performing film between 2000 and 2012, inclusive.
+SELECT MAX(gross) FROM films WHERE release_year BETWEEN 2000 and 2012
+
+              ###  A  Arithmetic problem!
+       
+  What is the result of SELECT (10 / 3)?
+       
+      SELECT 10/3
+
+
+                  ####Alias
+Get the title and net profit (the amount a film grossed, minus its budget) for all films.
+Alias the net profit as net_profit.
+SELECT title, (gross - budget) as net_profit FROM films
+
+Get the title and duration in hours for all films. The duration is in minutes,
+so you'll need to divide by 60.0 to get the duration in hours.
+Alias the duration in hours as duration_hours.
+SELECT title, duration/60.0 as duration_hours FROM films
+
+Get the average duration in hours for all films, aliased as avg_duration_hours.
+SELECT AVG(duration)/60.0 as avg_duration_hours from films
+
+Get the percentage of people who are no longer alive. Alias the result as percentage_dead.
+Remember to use 100.0 and not 100!
+SELECT COUNT(deathdate)/cast(COUNT(*) as DECIMAL)*100.0 as percentage_dead FROM people
+
+Get the number of decades the films table covers. Alias the result as number_of_decades.
+The top half of your fraction should be enclosed in parentheses.
+
+SELECT (MAX(release_year) - MIN(release_year)) / 10 as number_of_decades FROM films
+ 
+ 
+                   #####Sorting, Grouping
+    
+     Get the names of people from the people table, sorted alphabetically.
+     SELECT name from people ORDER BY name
+
+Get the names of people, sorted by birth date.
+SELECT name from people ORDER BY birthdate
+
+Get the birth date and name for every person, in order of when they were born.
+SELECT birthdate, name FROM people ORDER BY birthdate
+
+Get the title of films released in 2000 or 2012, in the order they were released
+SELECT title from films WHERE release_year=2000 or release_year=2012 ORDER BY release_year
+
+Get all details for all films except those released in 2015 and order them by duration.
+SELECT * from films WHERE not release_year=2015 ORDER BY duration
+
+Get the title and gross earnings for movies which begin with the letter 'M' and order the results alphabetically.
+SELECT title, gross from films WHERE title LIKE 'M%' ORDER BY title
+
+Get the title and gross earnings for movies which begin with the letter 'M' and order the results alphabetically.
+SELECT title, gross from films WHERE title LIKE 'M%' ORDER BY title
+
+Get the title and duration for every film, in order of longest duration to shortest.
+SELECT title, duration from films WHERE duration is not NULL ORDER BY duration DESC
+
+Get the birth date and name of people in the people table, in order of when they were born and alphabetically by name.
+SELECT birthdate, name from people ORDER BY birthdate, name
+
+Get certifications, release years, and titles of films ordered by certification (alphabetically) and release year.
+SELECT certification, release_year, title from films ORDER BY certification, release_year
+                       
+                       
+                         #### Group By
+
+
+      Get the release year and count of films released in each year.
+SELECT release_year, COUNT(*) FROM films GROUP BY release_year
+
+Get the release year and average duration of all films, grouped by release year.
+SELECT release_year, AVG(duration) from films GROUP BY release_year
+
+Get the release year and largest budget for all films, grouped by release year.
+
+SELECT release_year, MAX(budget) from films GROUP BY release_year
+
+Get the language and total gross amount films in each language made.
+
+SELECT language, SUM(gross) from films GROUP BY language
+
+Get the release year, country, and highest budget spent making a film for each year, for each country.
+Sort your results by release year and country.
+
+SELECT release_year, country, MAX(budget) from films GROUP BY release_year, country ORDER BY release_year, country
+                    
+                     
+                       ####Having
+
+
+In how many different years were more than 200 movies released? (Having)
+SELECT release_year, COUNT(*) from films GROUP BY release_year HAVING COUNT(*) > 200
+                            
+                            
+                      ####Limiting      
+     
+     Get the country, average budget, and average gross take of countries that have made more than 10 films.
+Order the result by country name, and limit the number of results displayed to 5.
+You should alias the averages as avg_budget and avg_gross respectively.
+
+SELECT country, AVG(budget), AVG(gross) from films GROUP BY country HAVING COUNT(*) > 10 ORDER BY country LIMIT 5
+
