@@ -9,10 +9,10 @@ Corresponding SQL query
 
 ## Selecting Columns
 
-1. Selecting Single Columns
-1. Selecting Multiple Columns
-1. Select DISTINCT
-1. Learning to COUNT
+1. [Selecting Single Columns](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#selecting-single-column)
+1. [Selecting Multiple Columns](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#selecting-multiple-columns)
+1. [Select DISTINCT](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#select-distinct)
+1. [Learning to COUNT](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#learning-to-count)
 
 ### Selecting Single Column
 
@@ -134,16 +134,14 @@ SELECT DISTINCT(country) from films
 
 ## Filtering Rows
 
-1. Filtering results
-1. Simple filtering of numeric values
-1. Simple filtering of text
-1. WHERE AND
-1. WHERE OR
-1. WHERE AND OR
-1. BETWEEN
-1. WHERE IN
-1. NULL and IS NULL
-1. Like and NOT LIKE
+1. [Filtering Results](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#filtering-results)
+1. [Simple filtering of numeric values](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#simple-filtering-of-numeric-values)
+1. [Simple filtering of text](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#simple-filtering-of-text)
+1. [WHERE AND](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#and)
+1. [WHERE AND OR](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#and-or)
+1. [BETWEEN](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#between)
+1. [NULL and IS NULL](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#null-and-is-null)
+1. [Like and NOT LIKE](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#like-and-not-like)
 
 ### Filtering Results
 
@@ -227,12 +225,6 @@ SELECT title, release_year from films WHERE release_year >= 1990 and  release_ye
 
 ---
 
-### OR
-
->
-
----
-
 ### AND OR
 
 >Get the title and release year of all films released in 1990 or 2000 that were longer than two hours. Remember, duration is in minutes!
@@ -289,11 +281,11 @@ SELECT name FROM people WHERE name LIKE '_r%'
 
 ## Aggregate Functions
 
-1. Aggregate function
-1. Combining aggregate functions with WHERE
-1. A note on arithmetic
-1. It's AS simple AS aliasing
-1. Even more aliasing
+1. [Aggregate Function](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#aggregate-function)
+1. [Combining Aggregate Functions with WHERE](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#combining-aggregate-functions-with-where)
+1. [A Note on Arithmetic](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#a-note-on-arithmetic)
+1. [It's AS simple AS Aliasing](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#its-as-simple-as-aliasing)
+1. [Even More Aliasing](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#even-more-aliasing)
 
 ### Aggregate Function
 
@@ -410,13 +402,12 @@ SELECT (MAX(release_year) - MIN(release_year)) / 10 as number_of_decades FROM fi
 
 ## Sorting, Grouping and Joins
 
-1. ORDER BY
-1. Sorting single columns
-1. Sorting single columns (DESC)
-1. Sorting multiple columns
-1. GROUP BY
-1. HAVING
-1. Limit
+1. [Sorting single columns](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#sorting-single-columns)
+1. [Sorting single columns (DESC)](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#sorting-single-columns-desc)
+1. [Sorting multiple columns](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#sorting-multiple-columns)
+1. [GROUP BY](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#group-by)
+1. [HAVING](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#having)
+1. [Limit](https://github.com/Nikronic/DBLab/blob/master/DBLab.wiki/Examples.md#limit)
 
 ### Sorting Single Columns
 
