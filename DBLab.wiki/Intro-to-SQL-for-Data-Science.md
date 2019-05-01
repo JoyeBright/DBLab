@@ -30,9 +30,9 @@
 
 ## Sorting, Grouping and Joins
 
-1. ORDER BY
 1. Sorting single columns
-1. Sorting single columns (DESC)
-1. Sorting multiple columns
-1. GROUP BY
-1. HAVING
+2. Sorting single columns (DESC)
+3. Sorting multiple columns
+4. GROUP BY
+5. HAVING
+6. Limit

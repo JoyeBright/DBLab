@@ -2,6 +2,7 @@
 
 Template of examples:
 >English Phrase
+
 ```SQL
 Corresponding SQL query
 ```
@@ -403,6 +404,153 @@ SELECT COUNT(deathdate)/cast(COUNT(*) as DECIMAL)*100.0 as percentage_dead FROM 
 
 ```SQL
 SELECT (MAX(release_year) - MIN(release_year)) / 10 as number_of_decades FROM films
+```
+
+---
+
+## Sorting, Grouping and Joins
+
+1. ORDER BY
+1. Sorting single columns
+1. Sorting single columns (DESC)
+1. Sorting multiple columns
+1. GROUP BY
+1. HAVING
+1. Limit
+
+### Sorting Single Columns
+
+>Get the names of people from the people table, sorted alphabetically.
+
+```SQL
+SELECT name from people ORDER BY name
+```
+
+---
+>Get the names of people, sorted by birth date.
+
+```SQL
+SELECT name from people ORDER BY birthdate
+```
+
+---
+>Get the birth date and name for every person, in order of when they were born.
+
+```SQL
+SELECT birthdate, name FROM people ORDER BY birthdate
+```
+
+---
+>Get the title of films released in 2000 or 2012, in the order they were released
+
+```SQL
+SELECT title from films WHERE release_year=2000 or release_year=2012 ORDER BY release_year
+```
+
+---
+>Get all details for all films except those released in 2015 and order them by duration.
+
+```SQL
+SELECT * from films WHERE not release_year=2015 ORDER BY duration
+```
+
+---
+>Get the title and gross earnings for movies which begin with the letter 'M' and order the results alphabetically.
+
+```SQL
+SELECT title, gross from films WHERE title LIKE 'M%' ORDER BY title
+```
+
+---
+>Get the title and gross earnings for movies which begin with the letter 'M' and order the results alphabetically.
+
+```SQL
+SELECT title, gross from films WHERE title LIKE 'M%' ORDER BY title
+```
+
+---
+
+### Sorting Single Columns (DESC)
+
+>Get the title and duration for every film, in order of longest duration to shortest.
+
+```SQL
+SELECT title, duration from films WHERE duration is not NULL ORDER BY duration DESC
+```
+
+---
+
+### Sorting Multiple Columns
+
+>Get the birth date and name of people in the people table, in order of when they were born and alphabetically by name.
+
+```SQL
+SELECT birthdate, name from people ORDER BY birthdate, name
+```
+
+---
+>Get certifications, release years, and titles of films ordered by certification (alphabetically) and release year.
+
+```SQL
+SELECT certification, release_year, title from films ORDER BY certification, release_year
+```
+
+---
+
+### Group By
+
+>Get the release year and count of films released in each year.
+
+```SQL
+SELECT release_year, COUNT(*) FROM films GROUP BY release_year
+```
+
+---
+>Get the release year and average duration of all films, grouped by release year.
+
+```SQL
+SELECT release_year, AVG(duration) from films GROUP BY release_year
+```
+
+---
+>Get the release year and largest budget for all films, grouped by release year.
+
+```SQL
+SELECT release_year, MAX(budget) from films GROUP BY release_year
+```
+
+---
+>Get the language and total gross amount films in each language made.
+
+```SQL
+SELECT language, SUM(gross) from films GROUP BY language
+```
+
+---
+>Get the release year, country, and highest budget spent making a film for each year, for each country. Sort your results by release year and country.
+
+```SQL
+SELECT release_year, country, MAX(budget) from films GROUP BY release_year, country ORDER BY release_year, country
+```
+
+---
+
+### Having
+
+>In how many different years were more than 200 movies released? (Having)
+
+```SQL
+SELECT release_year, COUNT(*) from films GROUP BY release_year HAVING COUNT(*) > 200
+```
+
+---
+
+### LIMIT
+
+>Get the country, average budget, and average gross take of countries that have made more than 10 films. Order the result by country name, and limit the number of results displayed to 5. You should alias the averages as avg_budget and avg_gross respectively.
+
+```SQL
+SELECT country, AVG(budget), AVG(gross) from films GROUP BY country HAVING COUNT(*) > 10 ORDER BY country LIMIT 5
 ```
 
 ---
