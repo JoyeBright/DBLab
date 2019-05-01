@@ -1,6 +1,6 @@
    
    
-        ####Selecting Columns
+        #### Columns
 
 
 Select the title column from the films table.
@@ -27,7 +27,7 @@ SELECT title, release_year, country from films
 Get all columns from the films table.
 SELECT * from films
                   
-                ####  Select DISTINCT
+                ####  DISTINCT
 
 Get all the unique countries represented in the films table.
 SELECT DISTINCT(country) FROM films
@@ -39,7 +39,7 @@ Get the different types of film roles from the roles table.
 SELECT DISTINCT(role) from roles
             
             
-              ####Learning to COUNT
+              #### COUNT
      
      Count the number of rows in the people table.
 SELECT COUNT(*) from people
