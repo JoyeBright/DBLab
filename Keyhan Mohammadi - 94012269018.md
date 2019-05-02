@@ -1,5 +1,5 @@
 ## Quest: Select the title column from the films table.
-category: selecting single column
+category: selecting single column</br>
 query: select title from films
 
 ## Quest: Select the release_year column from the films table.
