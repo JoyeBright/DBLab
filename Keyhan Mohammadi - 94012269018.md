@@ -117,3 +117,59 @@ query: select name from people where name like 'B%'
 ## Quest: Get the names of people whose names have 'r' as the second letter. The pattern you need is '_r%'.
 category: select single column, like and not like</br>
 query: select name from people where name like '_r%'
+
+## Quest: Use the SUM function to get the total duration of all films.
+category : aggregate functions
+query: select sum(duration) from films
+
+## Quest: Get the duration of the longest film.
+category: aggregate functions
+query: select max(duration) from films
+
+## Quest: Get the average duration of all films.
+category: aggregate functions
+query: select avg(duration) from films
+
+## Quest: Get the average amount grossed by all films.
+category: aggregate functions
+query: select avg(gross) from films
+
+## Quest: Use the SUM function to get the total amount grossed by all films made in the year 2000 or later.
+category: aggregate functions, filtering results
+query: select sum(gross) from films where release_year >= 2000
+
+## Quest: Get the average amount grossed by all films whose titles start with the letter 'A'.
+category: aggregate functions, filtering results, like and not like
+query: select avg(gross) from films where title like 'A%'
+
+## Quest: Get the amount grossed by the worst performing film in 1994.
+category: aggregate function, filtering results
+query: select min(gross) from films where release_year = 1994
+
+## Quest: Get the amount grossed by the best performing film between 2000 and 2012, inclusive.
+category: aggregate function, filtering results, BETWEEN
+query: select max(gross) from films where release_year between 2000 and 2012
+
+## Quest(Type2): What is the result of SELECT (10 / 3);?
+3
+
+## Quest: Get the title and net profit (the amount a film grossed, 
+minus its budget) for all films. Alias the net profit as net_profit.
+category: selecting multiple columns, alias (as), arithmetic
+query: select title, (gross - budget) as net_profit from films
+
+## Quest: Get the title and duration in hours for all films. The duration is in minutes, so you'll need to divide by 60.0 to get the duration in hours. Alias the duration in hours as duration_hours.
+category: selecting multiple columns, alias (as), arithmetic
+query: select title, (duration / 60.0) as duration_hours from films
+
+## Quest: Get the average duration in hours for all films, aliased as avg_duration_hours.
+category: aggregate duration, arithmetic
+query: select avg(duration / 60.0) from films
+
+## Quest: Get the percentage of people who are no longer alive. Alias the result as percentage_dead. Remember to use 100.0 and not 100!
+category: count, arithmetic, multiple selects, null and is null
+query: select (count(*) * 100.0 / (select count(*) from people)) as percentage_dead from people where deathdate is not null
+
+## Quest: Get the number of decades the films table covers. Alias the result as number_of_decades. The top half of your fraction should be enclosed in parentheses.
+category: count, distinct, arithmetic
+query: select count(distinct (release_year / 10)) as number_of_decades from films
