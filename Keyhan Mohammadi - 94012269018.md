@@ -173,3 +173,75 @@ query: select (count(*) * 100.0 / (select count(*) from people)) as percentage_d
 ## Quest: Get the number of decades the films table covers. Alias the result as number_of_decades. The top half of your fraction should be enclosed in parentheses.
 category: count, distinct, arithmetic, alias (as)</br>
 query: select count(distinct (release_year / 10)) as number_of_decades from films
+
+## Quest: Get the names of people from the people table, sorted alphabetically.
+category: order by, selecting single column</br>
+query: select name from people order by name
+
+## Quest: Get the names of people, sorted by birth date.
+category: selecting single column, order by</br>
+query: select name from people order by birthdate
+
+## Quest: Get the birth date and name for every person, in order of when they were born.
+category: selecting multiple columns, order by</br>
+query: select birthdate, name from people order by birthdate
+
+## Quest: Get the title of films released in 2000 or 2012, in the order they were released
+category: selecting single column, where in, filtering results, order by</br>
+query: select title from films where release_year in (2000, 2012) order by release_year
+
+## Quest: Get all details for all films except those released in 2015 and order them by duration.
+category: selecting multiple columns, filtering columns, order by</br>
+query: select * from films where release_year != 2015 order by duration
+
+## Quest: Get the title and gross earnings for movies which begin with the letter 'M' and order the results alphabetically.
+category: selecting multiple columns, like and not like, order by</br>
+query: select title, gross from films where title like 'M%' order by title
+
+## Quest: Get the IMDB score and film ID for every film from the reviews table, sorted from highest to lowest score.
+category: selecting multiple columns, order by (desc)</br>
+query: select imdb_score, film_id from reviews from reviews order by imdb_score desc</br>
+note : i used distinct function to detect if there is any non unique film_id in reviews meaning multiple reviews on same film so if it had became true then there would be a need to use foreign key with multiple select queries between films table and reviews table but i understood there is no need to do this here.
+
+## Quest: Get the title and duration for every film, in order of longest duration to shortest.
+category: selecting multiple columns, order by (desc)</br>
+query: select title, duration form films order by duration desc
+
+## Quest: Get the birth date and name of people in the people table, in order of when they were born and alphabetically by name.
+category: selecting multiple columns, order by (multiple)</br>
+query: select birthdate and name from people order by birthdate, name
+
+## Quest: Get certifications, release years, and titles of films ordered by certification (alphabetically) and release year.
+category: selecting multiple columns, order by (multiple)</br>
+query: select certification, release_year, title from films order by certification, release_year
+
+## Quest: Get the release year and count of films released in each year.
+category: count, selecting multiple columns, group by</br>
+query: select release_year, count(*) films group by release_year
+
+## Quest: Get the release year and average duration of all films, grouped by release year.
+category: aggregate functions, selecting semi multiple columns, group by</br>
+query: select release_year, avg(duration) from films group by release_year
+
+## Quest: Get the release year and largest budget for all films, grouped by release year.
+category: selecting semi multiple columns, group by, aggregate functions</br>
+query: select release_year, max(budget) from films group by release_year
+
+## Quest: Get the language and total gross amount films in each language made.
+category: selecting semi multiple columns, group by, aggregate functions</br>
+query: select language, sum(gross) from films group by language
+
+## Quest: Get the release year, country, and highest budget spent making a film for each year, for each country. Sort your results by release year and country.
+category: selecting multiple columns, aggregate function, group by (multiple), order by (multiple)</br>
+query: select release_year, country, max(budget) from films group by release_year, country order by release_year, country
+ |
+ |
+\ /
+ .
+## Quest: In how many different years were more than 200 movies released? (Having)
+category: selecting multiple columns, aggregate function, group by (multiple), order by (multiple), having</br>
+query: select release_year, country, max(budget) from films group by release_year, country having (count(*) > 150) order by release_year, country
+
+## Quest: Get the country, average budget, and average gross take of countries that have made more than 10 films. Order the result by country name, and limit the number of results displayed to 5. You should alias the averages as avg_budget and avg_gross respectively.
+category: selecting semi multiple columns, aggregate functions, group by, having, order by, count, limit, alias (as)</br>
+query: select country, avg(budget) as avg_budget, avg(gross) as avg_gross from films group by country having (count(*) > 10) order by country limit 5
