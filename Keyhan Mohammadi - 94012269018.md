@@ -100,7 +100,7 @@ query: select title, release_year from films where release_year between 1990 and
 
 ## Quest: Get the title and release year of all films released in 1990 or 2000 that were longer than two hours. Remember, duration is in minutes!
 category: selecting multiple columns, where or, where in</br>
-query: title, release_year from films where release_year in (1990, 2000) and duration > 120
+query: select title, release_year from films where release_year in (1990, 2000) and duration > 120
 
 ## Quest: Get the names of people who are still alive, i.e. whose death date is missing.
 category: select single column, null and in null</br>
