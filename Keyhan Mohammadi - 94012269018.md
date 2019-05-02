@@ -60,7 +60,7 @@ query: select * from films where release_year = 2016
 
 ## Quest: Get the number of films released before 2000.
 category: count, filtering results</br>
-query: select count(*) from films where release_year = 2000
+query: select count(*) from films where release_year < 2000
 
 ## Quest: Get the title and release year of films released after 2000.
 category: filtering results, selecting multiple columns</br>
